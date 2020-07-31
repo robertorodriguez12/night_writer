@@ -1,9 +1,8 @@
+require 'pry'
 class FileReader
 
-  def read_file
-    reader = File.open(ARGV[0])
-    # binding.pry
+  def read_file(message)
+    reader = File.open(message)
     @file_content = reader.read.chomp
-    reader.close
   end
 end

@@ -1,7 +1,9 @@
 class FileReader
 
-  def read
-    filename = ARGV[0]
-    file.read(filename)
+  def read_file
+    reader = File.open(ARGV[0])
+    # binding.pry
+    @file_content = reader.read.chomp
+    reader.close
   end
-end 
+end

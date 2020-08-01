@@ -22,4 +22,17 @@ class TranslatorTest < MiniTest::Test
     assert_equal [["0.", "00", ".."]],  translator.translate_to_braille(["h"])
     assert_equal [["0.", ".0", "00"]],  translator.translate_to_braille(["z"])
   end
+
+  def test_it_can_translate_multiple_letters
+    translator = Translator.new
+    expected_1 = [["0.", "00", ".."], [".0", "0.", ".."]]
+    expected_2 = [["0.", "00", ".."],
+                ["0.", ".0", ".."],
+                ["0.", "0.", "0."],
+                ["0.", "0.", "0."],
+                ["0.", ".0", "0."]]
+
+    assert_equal expected_1, translator.translate_to_braille(["h", "i"])
+    assert_equal expected_2, translator.translate_to_braille(["h", "e", "l", "l", "o"])
+  end
 end

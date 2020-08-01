@@ -27,4 +27,12 @@ class Translator
     braille.transpose
   end
 
+  def create_strings(transposed)
+    rows = []
+    transposed.each do |line|
+      rows << line.join
+    end
+    rows
+  end
+
 end

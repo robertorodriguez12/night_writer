@@ -61,4 +61,12 @@ class TranslatorTest < MiniTest::Test
     assert_equal expected, translator.create_strings(actual)
   end
 
+  def test_it_can_break_translated_message_to_depict_braille_letters_structure
+    translator = Translator.new
+    actual = ["0.0.0.0.0.", "00.00.0..0", "....0.0.0."]
+    expected = "0.0.0.0.0.\n00.00.0..0\n....0.0.0."
+
+    assert_equal expected, translator.create_braille_letter_structure(actual)
+  end
+
 end

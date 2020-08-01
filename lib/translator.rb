@@ -4,6 +4,13 @@ require 'pry'
 class Translator
   include BrailleKeys
 # binding.pry
+  def translation(message)
+    split      = split_characters(message)
+    braille    = translate_to_braille(split)
+    transposed = transpose(braille)
+    strings    = create_strings(transposed)
+    create_braille_letter_structure(strings)
+  end
 
   def split_characters(message)
     # binding.pry
@@ -42,14 +49,7 @@ class Translator
   def keep_under_80(strings)
     strings.map do |string|
       string.scan(/.{1,80}/)
-    end
+    end.transpose.flatten.join("\n")
   end
 
-  def translation(message)
-    split      = split_characters(message)
-    braille    = translate_to_braille(split)
-    transposed = transpose(braille)
-    strings    = create_strings(transposed)
-    create_braille_letter_structure(strings)
-  end
 end

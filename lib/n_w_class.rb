@@ -18,11 +18,11 @@ class NightWriter
   #   add method from translator class
   # end
 
-  #def create method in here to eventually translate to english 
+  #def create method in here to eventually translate to english
 
   def initial_input
     puts "Created '#{@render_to}' containing #{@message.length} characters"
-    File.write(@render_to, File.read(message))
+    File.write(@render_to, File.read(ARGV[0]))
   end
 
 end

@@ -69,4 +69,19 @@ class TranslatorTest < MiniTest::Test
     assert_equal expected, translator.create_braille_letter_structure(actual)
   end
 
+  def test_it_can_keep_lines_under_eighty
+    translator = Translator.new
+    transposed_braille = ["0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.",
+                        "00.00.0..000.00.0..000.00.0..000.00.0..000.00.0..000.00.0..000.00.0..000.00.0..0",
+                        "....0.0.0.....0.0.0.....0.0.0.....0.0.0.....0.0.0.....0.0.0.....0.0.0.....0.0.0."]
+    expected = "0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.\n00.00.0..000.00.0..000.00.0..000.00.0..000.00.0..000.00.0..000.00.0..000.00.0..0\n....0.0.0.....0.0.0.....0.0.0.....0.0.0.....0.0.0.....0.0.0.....0.0.0.....0.0.0."
+
+    assert_equal expected, translator.create_braille_letter_structure(transposed_braille)
+  end
+
+  def test_it_can_translate_and_format
+    translator = Translator.new
+    
+  end
+
 end

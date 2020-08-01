@@ -14,9 +14,8 @@ class FileReaderTest < MiniTest::Test
   def test_it_can_read
     if ARGV[0] == "message.txt"
       file_reader = FileReader.new
-      expected = "Hello world"
-      actual = file_reader.read_file
-      assert_equal expected, actual
+      expected = "hello world"
+      assert_equal expected, file_reader.read
     end
   end
 

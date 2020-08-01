@@ -81,7 +81,10 @@ class TranslatorTest < MiniTest::Test
 
   def test_it_can_translate_and_format
     translator = Translator.new
-    
+    message = "helloworld"
+    expected =   "0.0.0.0.0..00.0.0.00\n00.00.0..000.0000..0\n....0.0.0..00.0.0..."
+    # binding.pry
+    assert_equal expected, translator.translation(message)
   end
 
 end

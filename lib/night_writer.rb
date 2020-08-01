@@ -1,3 +1,4 @@
 require './lib/n_w_class'
+message, render_to = ARGV
 
-NightWriter.new(ARGV[0], ARGV[1])
+NightWriter.new(message, render_to)

@@ -1,28 +1,26 @@
 require './lib/file_reader'
+require './lib/translator'
+# require './lib/file_writer'
 require 'pry'
 
 class NightWriter
 
   def initialize(message, render_to)
-    @reader    = FileReader.new
-    # binding.pry
-    @message   = @reader.read
-    @render_to = render_to
+    @reader     = FileReader.new
+    @message    = @reader.read
+    @translator = Translator.new
+    @render_to  = render_to
     initial_input
+    translate_to_braille_and_create_new_file
   end
 
-  # def encode_file_to_braille
-  #   # I wouldn't worry about testing this method
-  #   # unless you get everything else done
-  #   plain = reader.read
-  #   braille = encode_to_braille(plain)
-  # end
+  def translate_to_braille_and_create_new_file
+    message = @message.gsub(" ","")
+    translated = @translator.translation(message)
+    File.write(@render_to, translated)
+  end
 
-  # def encode_to_braille(input)
-  #   # you've taken in an INPUT string
-  #   # do the magic
-  #   # send out an OUTPUT string
-  # end
+  #def create method in here to eventually translate to english
 
   def initial_input
     puts "Created '#{@render_to}' containing #{@message.length} characters"

@@ -16,4 +16,10 @@ class TranslatorTest < MiniTest::Test
     expected = ["h", "i"]
     assert_equal expected, translator.split_characters("hi")
   end
+
+  def test_it_can_translate_letters
+    translator = Translator.new
+    assert_equal [["0.", "00", ".."]],  translator.translate_to_braille(["h"])
+    assert_equal [["0.", ".0", "00"]],  translator.translate_to_braille(["z"])
+  end
 end

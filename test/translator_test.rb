@@ -49,4 +49,16 @@ class TranslatorTest < MiniTest::Test
               ["0.", ".0", "0."]]
     assert_equal expected, translator.transpose(actual)
   end
+
+  def test_it_can_create_a_string_from_translate_message
+    translator = Translator.new
+    actual = [["0.", "0.", "0.", "0.", "0."],
+              ["00", ".0", "0.", "0.", ".0"],
+              ["..", "..", "0.", "0.", "0."]]
+    expected = ["0.0.0.0.0.",
+                "00.00.0..0",
+                "....0.0.0."]
+    assert_equal expected, translator.create_strings(actual)
+  end
+
 end

@@ -9,7 +9,7 @@ class Translator
     braille    = translate_to_braille(split)
     transposed = transpose(braille)
     strings    = create_strings(transposed)
-    format_lines(strings)
+    create_braille_letter_structure(strings)
   end
 
   def split_characters(message)
@@ -38,8 +38,18 @@ class Translator
     rows
   end
 
-  def create_braille_letter_structure(string)
-    string.join("\n")
+  def create_braille_letter_structure(strings)
+    if strings[0].length > 80
+      keep_under_80(strings)
+    else
+      strings.join("\n")
+    end
+  end
+
+  def keep_under_80(strings)
+    strings.map do |string|
+      string.scan(/.{1,80}/)
+    end
   end
 
 end

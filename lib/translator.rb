@@ -25,6 +25,9 @@ class Translator
 
   def transpose(braille)
     braille.transpose
+    # This method is taking the first element of every
+    #array that was created during the translation and placing them in to a new array
+    # i'm doing this here so that I can format it later to properly stack for the braille.
   end
 
   def create_strings(transposed)
@@ -33,6 +36,10 @@ class Translator
       rows << line.join
     end
     rows
+  end
+
+  def create_braille_letter_structure(string)
+    string.join("\n")
   end
 
 end

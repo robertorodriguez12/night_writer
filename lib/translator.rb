@@ -4,13 +4,6 @@ require 'pry'
 class Translator
   include BrailleKeys
 # binding.pry
-  def translation(message)
-    split      = split_characters(message)
-    braille    = translate_to_braille(split)
-    transposed = transpose(braille)
-    strings    = create_strings(transposed)
-    create_braille_letter_structure(strings)
-  end
 
   def split_characters(message)
     # binding.pry
@@ -52,4 +45,11 @@ class Translator
     end
   end
 
+  def translation(message)
+    split      = split_characters(message)
+    braille    = translate_to_braille(split)
+    transposed = transpose(braille)
+    strings    = create_strings(transposed)
+    create_braille_letter_structure(strings)
+  end
 end

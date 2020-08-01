@@ -11,5 +11,9 @@ class TranslatorTest < MiniTest::Test
     assert_instance_of Translator, translator
   end
 
-
+  def test_it_can_split_message
+    translator = Translator.new
+    expected = ["h", "i"]
+    assert_equal expected, translator.split_characters("hi")
+  end
 end

@@ -35,4 +35,18 @@ class TranslatorTest < MiniTest::Test
     assert_equal expected_1, translator.translate_to_braille(["h", "i"])
     assert_equal expected_2, translator.translate_to_braille(["h", "e", "l", "l", "o"])
   end
+
+  def test_it_can_transpose_the_output
+    translator = Translator.new
+    expected = [["0.", "0.", "0.", "0.", "0."],
+                ["00", ".0", "0.", "0.", ".0"],
+                ["..", "..", "0.", "0.", "0."]]
+
+    actual = [["0.", "00", ".."],
+              ["0.", ".0", ".."],
+              ["0.", "0.", "0."],
+              ["0.", "0.", "0."],
+              ["0.", ".0", "0."]]
+    assert_equal expected, translator.transpose(actual)
+  end
 end

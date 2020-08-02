@@ -15,12 +15,12 @@ class NightWriter
   end
 
   def translate_to_braille_and_create_new_file
-    message = @message.gsub(" ","")
+    message = @message
     translated = @translator.translation(message)
     File.write(@render_to, translated)
   end
 
-  #def create method in here to eventually translate to english
+
 
   def initial_input
     puts "Created '#{@render_to}' containing #{@message.length} characters"

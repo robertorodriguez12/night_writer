@@ -45,7 +45,7 @@ class BrailleToEnglishTest < MiniTest::Test
     input1      = ["0."]
     input2      = ["00"]
     final_input = [".."]
-    expected = ["0.","00",".."]
+    expected = [["0.", "00", ".."]]
     assert_equal expected, translator.combine_elements(input1, input2, final_input)
   end
 
@@ -63,6 +63,18 @@ class BrailleToEnglishTest < MiniTest::Test
     assert_equal expected, translator.translate_braille(input)
   end
 
-  
+  def test_it_can_join_characters
+    translator = BrailleToEnglish.new
+    input = ["h", "h"]
+    expected = "hh"
+    assert_equal expected, translator.join(input)
+  end
+
+  def test_it_can_translate_braille_message_to_english
+    translator = BrailleToEnglish.new
+    message = "0.0.0.0.0.\n00.00.0..0\n....0.0.0."
+    expected = "hello"
+    assert_equal expected, translator.translation(message)
+  end
 
 end

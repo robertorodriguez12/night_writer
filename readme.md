@@ -37,4 +37,11 @@ first do the following:
     * In the same NightWriter root directory
       * run the following code : ```ruby ./lib/night_reader.rb <original message file path> <name of file to be created and translated into>```
 
+
+### Coverage Report
+The image below is a visual representation of the coverage report for this
+project
+
+![alt text](coverage_report.png "Coverage Report")
+
 ## Enjoy!!!!

@@ -1,28 +1,25 @@
 require './lib/file_reader'
-require './lib/translator'
-# require './lib/file_writer'
+require './lib/translate_to_english'
 require 'pry'
 
-class NightWriter
+class NightReader
 
   def initialize(message, render_to)
     @reader     = FileReader.new
     @message    = @reader.read
-    @translator = Translator.new
+    @translator = BrailleToEnglish.new
     @render_to  = render_to
-    initial_input
-    translate_to_braille_and_create_new_file
+    confirmation_output
+    translate_to_english_and_create_new_file
   end
 
-  def translate_to_braille_and_create_new_file
+  def translate_to_english_and_create_new_file
     message = @message
     translated = @translator.translation(message)
     File.write(@render_to, translated)
   end
 
-
-
-  def initial_input
+  def confirmation_output
     puts "Created '#{@render_to}' containing #{@message.length} characters"
   end
 

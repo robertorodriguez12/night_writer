@@ -21,4 +21,8 @@ class BrailleToEnglish
     input.fetch(1).scan(/.{1,2}/)
   end
 
+  def get_final_braille_element(input)
+    input.fetch(2).scan(/.{1,2}/)
+  end 
+
 end

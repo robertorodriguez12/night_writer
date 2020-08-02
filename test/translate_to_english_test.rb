@@ -19,4 +19,18 @@ class BrailleToEnglishTest < MiniTest::Test
     assert_equal expected, translator.split_braille(input)
   end
 
+  def test_it_can_return_first_element_of_braille_structure
+    translator = BrailleToEnglish.new
+    input = ["0.0.0.0.0.", "00.00.0..0", "....0.0.0."]
+    expected = ["0.", "0.", "0.", "0.", "0."]
+    assert_equal expected, translator.get_first_braille_element(input)
+  end
+
+  def test_it_can_return_second_elemnt_of_braille_structure
+    translator = BrailleToEnglish.new
+    input = ["0.0.0.0.0.", "00.00.0..0", "....0.0.0."]
+    expected = ["00", ".0", "0.", "0.", ".0"]
+    assert_equal expected, translator.get_second_braille_element(input)
+  end
+
 end

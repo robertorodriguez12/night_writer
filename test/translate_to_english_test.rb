@@ -40,4 +40,13 @@ class BrailleToEnglishTest < MiniTest::Test
     assert_equal expected, translator.get_final_braille_element(input)
   end
 
+  def test_it_can_combine_elements_to_form_a_letter
+    translator = BrailleToEnglish.new
+    input1      = ["0."]
+    input2      = ["00"]
+    final_input = [".."]
+    expected = ["0.","00",".."]
+    assert_equal expected, translator.combine_elements(input1, input2, final_input)
+  end
+
 end

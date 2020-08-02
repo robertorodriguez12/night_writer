@@ -56,4 +56,13 @@ class BrailleToEnglishTest < MiniTest::Test
     assert_equal expected, translator.translate_braille(input)
   end
 
+  def test_it_can_translate_multiple_characters
+    translator = BrailleToEnglish.new
+    input = ([["0.","00",".."], ["0.","00",".."]])
+    expected = ["h", "h"]
+    assert_equal expected, translator.translate_braille(input)
+  end
+
+  
+
 end

@@ -5,7 +5,13 @@ class BrailleToEnglish
   include EnglishKeys
 
   def translation(message)
-
+    split = split_braille(message)
+    first_element = get_first_braille_element(split)
+    second_element = get_second_braille_element(split)
+    final_element = get_final_braille_element(split)
+    combined = combine_elements(first_element, second_element, final_element)
+    translated = translate_braille(combined)
+    join(translated)
   end
 
   def split_braille(message)
@@ -26,13 +32,16 @@ class BrailleToEnglish
   end
 
   def combine_elements(input1, input2, input3)
-    first_two = input1 + input2
-    first_two + input3
+    input1.zip(input2, input3)
   end
 
   def translate_braille(input)
     input.map do |letter|
       english_keys[letter]
     end
+  end
+
+  def join(combined)
+    combined.join
   end
 end

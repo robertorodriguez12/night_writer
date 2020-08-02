@@ -29,4 +29,10 @@ class BrailleToEnglish
     first_two = input1 + input2
     first_two + input3
   end
+
+  def translate_braille(input)
+    input.map do |letter|
+      english_keys[letter]
+    end
+  end
 end

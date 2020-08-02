@@ -11,4 +11,12 @@ class BrailleToEnglishTest < MiniTest::Test
     assert_instance_of BrailleToEnglish, translator
   end
 
+  def test_it_can_split_braille
+    translator = BrailleToEnglish.new
+    input = "0.0.0.0.0.\n00.00.0..0\n....0.0.0."
+    expected = ["0.0.0.0.0.", "00.00.0..0", "....0.0.0."]
+
+    assert_equal expected, translator.split_braille(input)
+  end
+
 end

@@ -4,12 +4,13 @@ require 'pry'
 class BrailleToEnglish
   include EnglishKeys
 
-  def initialize
-    @argument = argument
-  end
-
   def translation(message)
 
   end
 
+  def split_braille(message)
+    length = message.length / 3
+    message.scan(/.{1,#{length}}/)
+    # binding.pry
+  end
 end

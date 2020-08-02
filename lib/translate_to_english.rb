@@ -23,6 +23,10 @@ class BrailleToEnglish
 
   def get_final_braille_element(input)
     input.fetch(2).scan(/.{1,2}/)
-  end 
+  end
 
+  def combine_elements(input1, input2, input3)
+    first_two = input1 + input2
+    first_two + input3
+  end
 end
